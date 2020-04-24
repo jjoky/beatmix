@@ -1,37 +1,76 @@
 // Drum Arrays
-let kicks = [];
-let snares = [];
-let hiHats = [];
-let rideCymbals = [];
+let kicks = new Array(16).fill(false);
+let snares = new Array(16).fill(false);
+let hiHats = new Array(16).fill(false);
+let rideCymbals = new Array(16).fill(false);
 
-const initialize = (drum) => {
-    for(let i = 0; i < 16; i++) {
-        drum.push(false);
+const toggleDrum = (drum, index) => {
+    if (drum != undefined && index != undefined && index >=0 && index <16) {
+        switch (drum) {
+            case 'kicks':
+                kicks[index] = !kicks[index];
+                break;
+            case 'snares':
+                snares[index] = !snares[index];
+                break;
+            case 'hiHats':
+                hiHats[index] = !hiHats[index];
+                break;
+            case 'rideCymbals':
+                rideCymbals[index] = !rideCymbals[index];
+                break;
+            default:
+                break;
+        }
     }
 }
 
-const toggleDrum = (drum, index) => {
-    drum[index] = !drum[index];
-}
-
 const clear = drum => {
-    drum.forEach((element, index, array) => {
-        array[index] = false;
-    });
+    if (drum != undefined) {
+        switch (drum) {
+            case 'kicks':
+                kicks = new Array(16).fill(false);
+                break;
+            case 'snares':
+                snares = new Array(16).fill(false);
+                break;
+            case 'hiHats':
+                hiHats = new Array(16).fill(false);
+                break;
+            case 'rideCymbals':
+                rideCymbals = new Array(16).fill(false);
+                break;
+            default:
+                break;
+        }
+    }
 };
 
 const invert = drum => {
-    drum.forEach((element, index, array) => {
-        array[index] = !element;
-    });
+    if (drum != undefined) {
+        switch (drum) {
+            case 'kicks':
+                kicks.forEach((element, index, array) => {
+                    array[index] = !element;
+                });
+                break;
+            case 'snares':
+                snares.forEach((element, index, array) => {
+                    array[index] = !element;
+                });
+                break;
+            case 'hiHats':
+                hiHats.forEach((element, index, array) => {
+                    array[index] = !element;
+                });
+                break;
+            case 'rideCymbals':
+                rideCymbals.forEach((element, index, array) => {
+                    array[index] = !element;
+                });
+                break;
+            default:
+                break;
+        }
+    }
 };
-
-initialize(kicks);
-initialize(snares);
-initialize(hiHats);
-initialize(rideCymbals);
-
-console.log(kicks);
-console.log(snares);
-console.log(hiHats);
-console.log(rideCymbals);
